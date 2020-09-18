@@ -17,9 +17,9 @@ end
 
 def total_medals_per_team(olympic_data)
 
-  medal_count = Hash.new(0)
+  medals_only_team = olympic_data.filter { |athlete| athlete["Medal"] != "NA"}
 
-  medals_only_team = olympic_data.filter { |athlete| athlete["Metal"] != "NA"}
+  medal_count = Hash.new(0)
 
   medals_only_team.each do |athlete|
     medal_count[athlete["Team"]] += 1
@@ -29,4 +29,8 @@ def total_medals_per_team(olympic_data)
 end
 
 def get_all_gold_medalists(olympic_data)
+
+  gold_only = olympic_data.filter { |athlete| athlete["Medal"] == "Gold" }
+
+  return gold_only
 end
